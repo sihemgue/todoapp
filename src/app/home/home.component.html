@@ -1,0 +1,36 @@
+<div class="btn_log">
+    <button mat-fab  (click)="logout()"><i class="material-icons">power_settings_new</i></button>
+</div>
+<div class="container-card">
+    <mat-card class="example-card">
+        <div class ="title">
+
+
+            <h1> Todos </h1>
+      </div>
+      <div class="title">
+          <button  (click)="openDialog()"><i class="material-icons">add_circle</i></button>
+      </div>
+
+  <div *ngFor="let todo of todos ">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h3 class="card-title">{{todo.title}}</h3>
+
+        </mat-panel-title>
+        <mat-panel-description>
+          <h3 class="card-title">{{todo.date}}</h3>
+
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <p class="card-text">{{todo.desc}}</p>
+
+
+      <mat-checkbox [(ngModel)]='todo.done'>Done </mat-checkbox>
+    </mat-expansion-panel>
+  </div> </mat-card>
+
+</div>

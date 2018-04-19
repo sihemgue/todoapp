@@ -1,0 +1,21 @@
+
+.container-card{
+  display: table-cell;
+  vertical-align: middle;
+padding-left: 170px;
+  margin: auto;
+  width: 1000px;
+}
+.example-card {
+  width: 700px;
+ padding: 50px;
+  margin: auto;
+}
+.title{
+  color:deeppink;
+  text-align: center;
+  width: 100%;
+}
+.btn_log{
+  text-align:end;
+}
