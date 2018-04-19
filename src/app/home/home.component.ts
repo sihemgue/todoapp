@@ -8,7 +8,7 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private todoservice: TodoService, public dialog: MatDialog) { }
+  constructor(private todoservice: TodoService, public dialog: DialogComponent) { }
 
    todos = '';
 
@@ -23,10 +23,6 @@ export class HomeComponent implements OnInit {
    return this.todoservice.logout();
   }
   openDialog() {
-    let dialog = this.dialog.open(DialogComponent );
-
-    dialog.afterClosed()
-      .subscribe();
+    return this.dialog.openDialog();
   }
-
 }

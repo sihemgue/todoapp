@@ -37,6 +37,8 @@ export class TodoService {
     localStorage.removeItem('token');
     return this.router.navigateByUrl('/login');
   }
+  addTodo(todo) {
+    return this.http.post('http://localhost:3000/api/todos/' + this.getId(this.savetoken()) , todo) ;  }
 }
 
 

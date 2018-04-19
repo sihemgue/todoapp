@@ -8,12 +8,16 @@ export class AuthService {
   login(user) {
    return this.http.post('http://localhost:3000/auth/login', user);
   }
-
+  addUser(user) {
+    console.log(user);
+    return this.http.post('http://localhost:3000/auth/register', user);
+  }
   savetoken(T) {
    return localStorage.setItem('token', T);
   }
   checktoken() {
     if (localStorage.getItem('token')) {
+
       const token = localStorage.getItem('token');
       const jwtHelper: JwtHelper = new JwtHelper();
       console.log(jwtHelper.decodeToken(token));

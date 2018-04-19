@@ -28,15 +28,27 @@ let response = {
   message: null
 };
 router.post('/register', function (req, res) {
-
-    connection(db => {
-
-        db.collection('Users').insert(req.body).then(result => {
-            res.send(result)
-            console.log(req.body + ' success')
-        })
+  let qry = {
+    "email": req.body.email
+  };
+  connection(db => {
+    db.collection('Users').findOne(qry).then(result => {
+      console.log(req.body.email);
+      if (result) {
+        response.status = 401;
+        response.message = "account already exists";
+        response.data = jwt.sign(result, 'james_bond');
+      } else {
+        db.collection('Users').insertOne(req.body)
+        response.status = 200;
+        response.message = "register succes";
+        response.data = jwt.sign(req.body, 'james_bond');
+      }
+      res.json(response)
+    }).catch(err => {
+      sendError(err, res, 409);
     })
-
+  })
 })
 
 router.post('/login', function (req, res) {

@@ -40,7 +40,7 @@ import { DialogComponent } from './dialog/dialog.component';
     ReactiveFormsModule,
 
   ],
-  providers: [AuthService, AuthGuard, TodoGuard, TodoService],
+  providers: [AuthService, AuthGuard, TodoGuard, TodoService, DialogComponent],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]
 })
