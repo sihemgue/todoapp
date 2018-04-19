@@ -17,27 +17,6 @@
         </form>
       </div>
     </div>
-    <div *ngIf= "todos" >
-    <div *ngFor="let todo of todos ">
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <h3 class="card-title">{{todo.title}}</h3>
 
-          </mat-panel-title>
-          <mat-panel-description>
-            <h3 class="card-title">{{todo.date}}</h3>
-
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-
-
-        <p class="card-text">{{todo.desc}}</p>
-
-
-        <mat-checkbox [(ngModel)]='todo.done'>Done </mat-checkbox>
-      </mat-expansion-panel>
-    </div>
-    </div>
   </div>
 

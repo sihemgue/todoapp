@@ -11,7 +11,7 @@
       <div class="title">
           <button  (click)="openDialog()"><i class="material-icons">add_circle</i></button>
       </div>
-
+<!--
   <div *ngFor="let todo of todos ">
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
       <mat-expansion-panel-header>
@@ -33,4 +33,54 @@
     </mat-expansion-panel>
   </div> </mat-card>
 
+</div>
+!-->
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" name="filter" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource">
+
+
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef>
+        <h2>title</h2>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <h3>{{element.title}} </h3>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef>
+        <h2>Date</h2>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <h3>{{element.date}}</h3>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>
+        <h2>status</h2>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <h3>
+          <mat-checkbox  ng-change="false" [(ngModel)]='element.done'> Done</mat-checkbox>
+        </h3>
+      </mat-cell>
+    </ng-container>
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>

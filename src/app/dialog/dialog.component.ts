@@ -15,9 +15,9 @@ export class DialogComponent implements OnInit {
   todoForm = new FormGroup({
     title: new FormControl('', Validators.required),
     desc: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-    date: new FormControl('', Validators.required),
 
-    DONE: new FormControl('')
+
+    DONE: new FormControl(false)
   });
   todos;
   ngOnInit() {
@@ -35,20 +35,21 @@ export class DialogComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-
+      this.ngOnInit();
     });
 
   }
 
-  todoFormSubmit(dataForm) {
-    this.todoservice.addTodo(dataForm).subscribe(res => {
-     // console.log(res);
+  todoFormSubmit(f) {
 
+    this.todoservice.addTodo(f).subscribe(res => {
+     // console.log(res);
+      this.ngOnInit();
     });
   }
   onNoClick(): void {
     this.dialog.closeAll();
-    this.ngOnInit();
+
   }
 
 }
